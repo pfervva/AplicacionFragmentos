@@ -1,6 +1,6 @@
 package com.example.aplicacionfragmentos.dao
 
-import com.example.aplicacionfragmentos.Repository
+import com.example.aplicacionfragmentos.objects_models.Repository
 import com.example.aplicacionfragmentos.interfaces.InterfaceDao
 import com.example.aplicacionfragmentos.models.Hotel
 

@@ -1,4 +1,4 @@
-package com.example.aplicacionfragmentos
+package com.example.aplicacionfragmentos.objects_models
 
 import com.example.aplicacionfragmentos.models.Hotel
 
