@@ -2,7 +2,7 @@ package com.example.aplicacionfragmentos.controler
 
 import android.content.Context
 import android.widget.Toast
-import com.example.aplicacionfragmentos.AdapterHotel
+import com.example.aplicacionfragmentos.adapter.AdapterHotel
 import com.example.aplicacionfragmentos.MainActivity
 import com.example.aplicacionfragmentos.dao.DaoHotels
 import com.example.aplicacionfragmentos.models.Hotel
@@ -25,6 +25,6 @@ class Controller ( val context : Context){
     }
     fun setAdapter() { // Cargamos nuestro AdapterHotgel al adapter del RecyclerView
         val myActivity = context as MainActivity
-        myActivity. binding.myRecyclerView.adapter = AdapterHotel( listHotels) // Cargamos el Adapter que creamos.
+        myActivity. binding.myRecyclerView.adapter = AdapterHotel(listHotels) // Cargamos el Adapter que creamos.
     }
 }
