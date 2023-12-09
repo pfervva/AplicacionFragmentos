@@ -1,4 +1,4 @@
-package com.example.aplicacionfragmentos
+package com.example.aplicacionfragmentos.models
 
 class Hotel (
     var name: String,

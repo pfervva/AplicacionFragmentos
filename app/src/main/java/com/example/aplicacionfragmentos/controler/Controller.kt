@@ -1,7 +1,11 @@
-package com.example.aplicacionfragmentos
+package com.example.aplicacionfragmentos.controler
 
 import android.content.Context
 import android.widget.Toast
+import com.example.aplicacionfragmentos.AdapterHotel
+import com.example.aplicacionfragmentos.MainActivity
+import com.example.aplicacionfragmentos.dao.DaoHotels
+import com.example.aplicacionfragmentos.models.Hotel
 
 
 class Controller ( val context : Context){

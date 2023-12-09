@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf ="@id/txtview_name"
             app:layout_constraintEnd_toEndOf ="parent"
             tools:text="City para ver"
-            android:textColor = "@color/purple_700"
+            android:textColor = "#7B1FA2"
             android:textSize = "18sp"
             android:layout_marginTop ="15dp"
             />
@@ -54,7 +54,7 @@
             app:layout_constraintTop_toBottomOf ="@id/txtview_city"
             app:layout_constraintEnd_toEndOf ="parent"
             tools:text="Provincia para ver"
-            android:textColor = "@color/purple_500"
+            android:textColor = "#9C27B0"
             android:textSize = "18sp"
             />
         <TextView
@@ -65,7 +65,7 @@
             app:layout_constraintTop_toBottomOf ="@id/txtview_province"
             app:layout_constraintEnd_toEndOf ="parent"
             tools:text="000 000 000"
-            android:textColor = "@color/purple_500"
+            android:textColor = "#9C27B0"
             android:textSize = "20sp"
             />
 

@@ -4,6 +4,7 @@ package com.example.aplicacionfragmentos
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aplicacionfragmentos.adapter.ViewHHotel
 import com.example.aplicacionfragmentos.models.Hotel
 
 

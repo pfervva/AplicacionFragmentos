@@ -1,4 +1,4 @@
-package com.example.aplicacionfragmentos
+package com.example.aplicacionfragmentos.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

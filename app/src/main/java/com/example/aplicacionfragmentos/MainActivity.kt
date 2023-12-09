@@ -3,6 +3,7 @@ package com.example.aplicacionfragmentos
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.aplicacionfragmentos.controler.Controller
 import com.example.aplicacionfragmentos.databinding.ActivityMainBinding
 
 
