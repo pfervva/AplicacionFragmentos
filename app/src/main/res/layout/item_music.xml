@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivMusic"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_song_title"
+            android:layout_width="170dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="12dp"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toEndOf="@id/ivMusic"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Song Title" />
+
+        <TextView
+            android:id="@+id/txt_artists"
+            android:layout_width="135dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="15dp"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:textColor="#7B1FA2"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivMusic"
+            app:layout_constraintTop_toBottomOf="@id/txt_song_title"
+            tools:text="Artist(s) Name" />
+
+        <LinearLayout
+            android:id="@+id/ll_media_controls"
+            android:layout_width="62dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivMusic"
+            app:layout_constraintTop_toBottomOf="@id/txt_artists">
+
+            <ImageView
+                android:id="@+id/btn_play"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/play_button" />
+
+            <ImageView
+                android:id="@+id/btn_pause"
+                android:layout_width="28dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/pause_button" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btn_edit"
+            android:layout_width="17dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="68dp"
+            android:src="@drawable/edit_ic_baseline_edit_24"
+            app:layout_constraintStart_toStartOf="@+id/ll_media_controls"
+            app:layout_constraintTop_toTopOf="@+id/txt_artists"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="17dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="68dp"
+            android:src="@drawable/delete_ic_baseline_delete_24"
+            app:layout_constraintStart_toStartOf="@+id/btn_edit"
+            app:layout_constraintTop_toTopOf="@+id/txt_artists"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

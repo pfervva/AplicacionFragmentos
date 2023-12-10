@@ -1,8 +1,8 @@
 package com.example.aplicacionfragmentos.interfaces
 
-import com.example.aplicacionfragmentos.models.Hotel
+import com.example.aplicacionfragmentos.models.Musica
 
 interface InterfaceDao {
-    fun getDataHotels() : List<Hotel>
+    fun getDataHotels() : List<Musica>
 
 }

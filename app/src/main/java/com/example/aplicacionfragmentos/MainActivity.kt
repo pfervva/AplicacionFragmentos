@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         initRecyclerView()
         controller = Controller(this) //Creamos el controler
         controller.setAdapter()
-        //controller.loggOut() //muestro el log en pantalla
     }
     private fun initRecyclerView() {
         binding.myRecyclerView.layoutManager = LinearLayoutManager( this)

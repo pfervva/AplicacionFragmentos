@@ -3,16 +3,16 @@ package com.example.aplicacionfragmentos.adapter
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.aplicacionfragmentos.databinding.ItemHotelBinding
-import com.example.aplicacionfragmentos.models.Hotel
+import com.example.aplicacionfragmentos.databinding.ItemMusicBinding
+import com.example.aplicacionfragmentos.models.Musica
 
-class ViewHHotel(view: View, private val adapter: AdapterHotel, private val hotelList: MutableList<Hotel>) :
+class ViewHMusica(view: View, private val adapter: AdapterMusica, private val musicaList: MutableList<Musica>) :
     RecyclerView.ViewHolder(view) {
 
-    lateinit var binding: ItemHotelBinding
+    lateinit var binding: ItemMusicBinding
 
     init {
-        binding = ItemHotelBinding.bind(view)
+        binding = ItemMusicBinding.bind(view)
         binding.btnEdit.setOnClickListener {
             // Implementa la lógica para editar el hotel si es necesario
         }
@@ -21,7 +21,7 @@ class ViewHHotel(view: View, private val adapter: AdapterHotel, private val hote
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 // Remueve el hotel de la lista
-                hotelList.removeAt(position)
+                musicaList.removeAt(position)
                 // Notifica al adaptador sobre el cambio en los datos
                 adapter.notifyItemRemoved(position)
             }
@@ -29,15 +29,14 @@ class ViewHHotel(view: View, private val adapter: AdapterHotel, private val hote
     }
 
     // Método que se encarga de mapear los item por propiedad del modelo.
-    fun renderize(hotel: Hotel) {
-        binding.txtviewName.text = hotel.name
-        binding.txtviewCity.text = hotel.city
-        binding.txtviewProvince.text = hotel.province
-        binding.txtviewPhone.text = hotel.phone
+    fun renderize(musica: Musica) {
+        binding.txtSongTitle.text = musica.name
+        binding.txtArtists.text = musica.artita
+
         Glide.with(itemView.context)
-            .load(hotel.image)
+            .load(musica.image)
             .centerCrop()
-            .into(binding.ivHotel)
+            .into(binding.ivMusic)
     }
 }
 
