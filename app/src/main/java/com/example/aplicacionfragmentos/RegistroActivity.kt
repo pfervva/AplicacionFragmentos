@@ -23,7 +23,7 @@ class RegistroActivity : AppCompatActivity() {
         val buttonLogin: Button = findViewById(R.id.buttonlogin)
 
         textView7.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, InicioSesionActivity::class.java)
             startActivity(intent)
         }
 
