@@ -2,9 +2,12 @@ package com.example.aplicacionfragmentos.controler
 
 import android.app.AlertDialog
 import android.content.Context
+import android.view.LayoutInflater
+import android.widget.EditText
 import android.widget.Toast
 import com.example.aplicacionfragmentos.adapter.AdapterMusica
 import com.example.aplicacionfragmentos.MainActivity
+import com.example.aplicacionfragmentos.R
 import com.example.aplicacionfragmentos.dao.DaoMusic
 import com.example.aplicacionfragmentos.models.Musica
 
@@ -32,7 +35,8 @@ class Controller(val context: Context) {
         adapterMusica = AdapterMusica(
             listMusicas,
             { pos -> delMusica(pos) },
-            { pos -> updateMusica(pos) }
+            { pos -> updateMusica(pos) },
+            { musica, position -> showEditDialog(musica, position) }
         )
         myActivity.binding.myRecyclerView.adapter = adapterMusica
     }
@@ -43,13 +47,13 @@ class Controller(val context: Context) {
 
             val builder = AlertDialog.Builder(context)
             builder.setMessage("¿Deseas borrar la música ${deletedMusica.name}?")
-                .setPositiveButton("Sí") { dialog, id ->
+                .setPositiveButton("Sí") { _, _ ->
                     // Realiza la lógica de eliminación aquí
                     listMusicas.removeAt(position)
                     adapterMusica.notifyItemRemoved(position)
                     Toast.makeText(context, "Música eliminada: ${deletedMusica.name}", Toast.LENGTH_SHORT).show()
                 }
-                .setNegativeButton("No") { dialog, id ->
+                .setNegativeButton("No") { dialog, _ ->
                     dialog.dismiss()
                 }
 
@@ -61,9 +65,52 @@ class Controller(val context: Context) {
 
     private fun updateMusica(position: Int) {
         if (position >= 0 && position < listMusicas.size) {
-            val updatedMusica = listMusicas[position]
-            Toast.makeText(context, "Editando música: ${updatedMusica.name}", Toast.LENGTH_SHORT).show()
-            // Puedes implementar la lógica de actualización aquí, por ejemplo, abrir un formulario de edición
+            // Mostrar el diálogo de edición
+            showEditDialog(listMusicas[position], position)
         }
+    }
+
+    private fun showEditDialog(musica: Musica?, position: Int?) {
+        val builder = AlertDialog.Builder(context)
+        val inflater = LayoutInflater.from(context)
+        val dialogView = inflater.inflate(R.layout.dialog_add_edit, null)
+        builder.setView(dialogView)
+
+        val editTextName = dialogView.findViewById<EditText>(R.id.editTextName)
+        val editTextArtist = dialogView.findViewById<EditText>(R.id.editTextArtist)
+        val editTextImage = dialogView.findViewById<EditText>(R.id.editTextImage)
+
+        if (musica != null) {
+            // Si es una edición, cargamos los datos existentes
+            editTextName.setText(musica.name)
+            editTextArtist.setText(musica.artita)
+            editTextImage.setText(musica.image)
+        }
+        builder.setPositiveButton("Aceptar") { _, _ ->
+            // Obtener los valores ingresados en el diálogo
+            val name = editTextName.text.toString()
+            val artist = editTextArtist.text.toString()
+            val image = editTextImage.text.toString()
+
+            // Lógica para añadir o editar según sea necesario
+            if (position == null) {
+                // Añadir nueva canción
+                val newMusica = Musica(name, artist, image)
+                listMusicas.add(newMusica)
+                adapterMusica.notifyItemInserted(listMusicas.size - 1)
+            } else {
+                // Editar canción existente
+                if (position >= 0 && position < listMusicas.size) {
+                    listMusicas[position] = Musica(name, artist, image)
+                    adapterMusica.notifyItemChanged(position)
+                }
+            }
+        }
+
+        builder.setNegativeButton("Cancelar") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        builder.create().show()
     }
 }

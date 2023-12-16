@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.aplicacionfragmentos.databinding.ItemMusicBinding
 import com.example.aplicacionfragmentos.models.Musica
+import com.example.aplicacionfragmentos.objects_models.Repository.listMusicas
 
 class ViewHMusica(
     view: View,
     var deleteOnClick: (Int) -> Unit,
-    var updateOnClick: (Int) -> Unit
+    var updateOnClick: (Int) -> Unit,
+    var showEditDialog: (Musica?, Int?) -> Unit
 ) : RecyclerView.ViewHolder(view) {
 
     lateinit var binding: ItemMusicBinding
@@ -21,9 +23,6 @@ class ViewHMusica(
             deleteOnClick(adapterPosition)
         }
 
-        binding.btnEdit.setOnClickListener {
-            updateOnClick(adapterPosition)
-        }
     }
 
     // Método que se encarga de mapear los item por propiedad del modelo.
@@ -37,3 +36,4 @@ class ViewHMusica(
             .into(binding.ivMusic)
     }
 }
+

@@ -15,7 +15,7 @@ object Repository {
             "Nostalgia" , "FlowGPT", "https://i1.sndcdn.com/artworks-4HxJ6nHz61tO8N6M-gk5d2A-t500x500.jpg"
         ),
         Musica(
-            "Playa Del Inglés" , "Quevedo, Myke Towers", "https://m.media-amazon.com/images/I/51rLP2EyaGL._UXNaN_FMjpg_QL85_.jpg"
+            "Playa Del Inglés" , "Quevedo, Myke Towers", "https://images.genius.com/bf4f96f7bd694101c130ac7241b0c11f.1000x1000x1.jpg"
         ),
         Musica(
             "Las Bratz" , "Aissa, Saiko, JC Reyes", "https://i.scdn.co/image/ab67616d0000b273a36330e3f5277b9f44286092"
