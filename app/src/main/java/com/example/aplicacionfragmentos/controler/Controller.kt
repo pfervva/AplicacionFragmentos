@@ -70,7 +70,7 @@ class Controller(val context: Context) {
         }
     }
 
-    private fun showEditDialog(musica: Musica?, position: Int?) {
+    internal  fun showEditDialog(musica: Musica?, position: Int?) {
         val builder = AlertDialog.Builder(context)
         val inflater = LayoutInflater.from(context)
         val dialogView = inflater.inflate(R.layout.dialog_add_edit, null)
@@ -86,15 +86,15 @@ class Controller(val context: Context) {
             editTextArtist.setText(musica.artita)
             editTextImage.setText(musica.image)
         }
+
         builder.setPositiveButton("Aceptar") { _, _ ->
             // Obtener los valores ingresados en el diálogo
             val name = editTextName.text.toString()
             val artist = editTextArtist.text.toString()
             val image = editTextImage.text.toString()
 
-            // Lógica para añadir o editar según sea necesario
             if (position == null) {
-                // Añadir nueva canción
+                // Agregar nueva canción
                 val newMusica = Musica(name, artist, image)
                 listMusicas.add(newMusica)
                 adapterMusica.notifyItemInserted(listMusicas.size - 1)
