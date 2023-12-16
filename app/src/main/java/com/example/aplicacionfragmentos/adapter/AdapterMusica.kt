@@ -7,12 +7,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionfragmentos.R
 import com.example.aplicacionfragmentos.models.Musica
 
-class AdapterMusica(private val listMusica: MutableList<Musica>) : RecyclerView.Adapter<ViewHMusica>() {
+class AdapterMusica(
+    var listMusica: MutableList<Musica>,
+    var deleteOnClick: (Int) -> Unit,
+    var updateOnClick: (Int) -> Unit
+) : RecyclerView.Adapter<ViewHMusica>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHMusica {
         val layoutInflater = LayoutInflater.from(parent.context)
         val layoutItemMusic = R.layout.item_music
-        return ViewHMusica(layoutInflater.inflate(layoutItemMusic, parent, false), this, listMusica)
+        return ViewHMusica(
+            layoutInflater.inflate(layoutItemMusic, parent, false),
+            deleteOnClick,
+            updateOnClick
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHMusica, position: Int) {
