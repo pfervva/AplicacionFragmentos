@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:srcCompat="@drawable/logo_add_edit" /> <!-- Reemplaza con tu recurso de imagen -->
+
 
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre de la canción"/>
+        android:hint="Nombre de la canción" />
 
     <EditText
         android:id="@+id/editTextArtist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Artista"/>
+        android:hint="Artista" />
 
     <EditText
         android:id="@+id/editTextImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="URL de la imagen"/>
+        android:hint="URL de la imagen" />
 
 </LinearLayout>

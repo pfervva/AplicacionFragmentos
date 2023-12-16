@@ -69,7 +69,7 @@
 
             <ImageView
                 android:id="@+id/btn_pause"
-                android:layout_width="28dp"
+                android:layout_width="24dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="8dp"
                 android:src="@drawable/pause_button" />
@@ -79,24 +79,24 @@
 
         <ImageView
             android:id="@+id/btn_edit"
-            android:layout_width="17dp"
-            android:layout_height="14dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="68dp"
+            android:layout_width="24dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/edit_ic_baseline_edit_24"
-            app:layout_constraintStart_toStartOf="@+id/ll_media_controls"
-            app:layout_constraintTop_toTopOf="@+id/txt_artists"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ll_media_controls"
             tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/btn_delete"
-            android:layout_width="17dp"
-            android:layout_height="14dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="68dp"
+            android:layout_width="24dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/delete_ic_baseline_delete_24"
-            app:layout_constraintStart_toStartOf="@+id/btn_edit"
-            app:layout_constraintTop_toTopOf="@+id/txt_artists"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ll_media_controls"
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

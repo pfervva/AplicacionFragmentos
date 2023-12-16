@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         // Asignar OnClickListener al ImageButton
         binding.btnAdd.setOnClickListener {
-            Log.d("MainActivity", "ImageButton clicked")
+            Log.d("MainActivity", "ImageButton pulsado")
             controller.showEditDialog(null, null)
         }
     }
