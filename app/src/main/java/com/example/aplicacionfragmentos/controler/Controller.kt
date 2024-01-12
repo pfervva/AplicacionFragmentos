@@ -5,13 +5,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.Toast
-import com.example.aplicacionfragmentos.adapter.AdapterMusica
-import com.example.aplicacionfragmentos.MainActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionfragmentos.R
+import com.example.aplicacionfragmentos.adapter.AdapterMusica
 import com.example.aplicacionfragmentos.dao.DaoMusic
 import com.example.aplicacionfragmentos.models.Musica
 
-class Controller(val context: Context) {
+class Controller(val context: Context, val recyclerView: RecyclerView) {
     lateinit var listMusicas: MutableList<Musica>
     lateinit var adapterMusica: AdapterMusica
 
@@ -31,14 +31,13 @@ class Controller(val context: Context) {
     }
 
     fun setAdapter() {
-        val myActivity = context as MainActivity
         adapterMusica = AdapterMusica(
             listMusicas,
             { pos -> delMusica(pos) },
             { pos -> updateMusica(pos) },
             { musica, position -> showEditDialog(musica, position) }
         )
-        myActivity.binding.myRecyclerView.adapter = adapterMusica
+        recyclerView.adapter = adapterMusica
     }
 
     private fun delMusica(position: Int) {
@@ -70,7 +69,7 @@ class Controller(val context: Context) {
         }
     }
 
-    internal  fun showEditDialog(musica: Musica?, position: Int?) {
+    internal fun showEditDialog(musica: Musica?, position: Int?) {
         val builder = AlertDialog.Builder(context)
         val inflater = LayoutInflater.from(context)
         val dialogView = inflater.inflate(R.layout.dialog_add_edit, null)
