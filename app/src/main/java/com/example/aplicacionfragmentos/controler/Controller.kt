@@ -5,13 +5,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.widget.EditText
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.example.aplicacionfragmentos.adapter.AdapterMusica
-import com.example.aplicacionfragmentos.MainActivity
 import com.example.aplicacionfragmentos.R
 import com.example.aplicacionfragmentos.dao.DaoMusic
 import com.example.aplicacionfragmentos.models.Musica
 
-class Controller(val context: Context) {
+class Controller(private val context: Context) {
     lateinit var listMusicas: MutableList<Musica>
     lateinit var adapterMusica: AdapterMusica
 
@@ -19,7 +19,7 @@ class Controller(val context: Context) {
         initData()
     }
 
-    fun initData() {
+    private fun initData() {
         listMusicas = DaoMusic.myDao.getDataHotels().toMutableList()
     }
 
@@ -30,15 +30,14 @@ class Controller(val context: Context) {
         }
     }
 
-    fun setAdapter() {
-        val myActivity = context as MainActivity
+    fun setAdapter(recyclerView: RecyclerView) {
         adapterMusica = AdapterMusica(
             listMusicas,
             { pos -> delMusica(pos) },
             { pos -> updateMusica(pos) },
             { musica, position -> showEditDialog(musica, position) }
         )
-        myActivity.binding.myRecyclerView.adapter = adapterMusica
+        recyclerView.adapter = adapterMusica
     }
 
     private fun delMusica(position: Int) {

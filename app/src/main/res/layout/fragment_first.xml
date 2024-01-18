@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundfirstfragment">
+
+    <TextView
+        android:id="@+id/tvChooseMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/andika"
+        android:text="Busca tu musica"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/searchField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvChooseMusic"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bordear_buscador"
+        android:hint="Buscar..."
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+    />
+
+
+    <TextView
+        android:id="@+id/tvMood"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchField"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="27dp"
+        android:fontFamily="@font/andika"
+        android:text="Pop"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvMood"
+        android:layout_marginTop="-1dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="3"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="105dp"
+            android:layout_height="104dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grid1" />
+
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="105dp"
+            android:layout_height="104dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grid1" />
+
+        <ImageView
+            android:id="@+id/imageView26"
+            android:layout_width="105dp"
+            android:layout_height="104dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grid1" />
+
+
+    </GridLayout>
+
+
+</RelativeLayout>

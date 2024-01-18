@@ -15,19 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        init() // Inicializo la clase
-    }
 
-    fun init() {
-        initRecyclerView()
-        controller = Controller(this) // Creamos el controlador
-        controller.setAdapter()
-
-        // Asignar OnClickListener al ImageButton
-        binding.btnAdd.setOnClickListener {
-            Log.d("MainActivity", "ImageButton pulsado")
-            controller.showEditDialog(null, null)
-        }
     }
 
     private fun initRecyclerView() {
