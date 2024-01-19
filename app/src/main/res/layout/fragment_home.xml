@@ -72,7 +72,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/grid1" />
+            android:src="@drawable/grid3" />
 
         <ImageView
             android:id="@+id/imageView26"
@@ -81,7 +81,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/grid1" />
+            android:src="@drawable/grid2" />
 
 
     </GridLayout>
@@ -95,7 +95,7 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="227dp"
         android:fontFamily="@font/andika"
-        android:text="Pop"
+        android:text="Chill"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -116,7 +116,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/grid1" />
+            android:src="@drawable/grid6" />
 
         <ImageView
             android:id="@+id/imageView30"
@@ -125,7 +125,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/grid1" />
+            android:src="@drawable/grid4" />
 
         <ImageView
             android:id="@+id/imageView29"
@@ -134,7 +134,7 @@
             android:layout_margin="8dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/grid1" />
+            android:src="@drawable/grid5" />
 
 
     </GridLayout>
