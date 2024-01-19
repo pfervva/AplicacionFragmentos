@@ -7,7 +7,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.aplicacionfragmentos.fragmentos.Inicio
 
 class RegistroActivity : AppCompatActivity() {
 
@@ -33,7 +32,7 @@ class RegistroActivity : AppCompatActivity() {
             val enteredPassword = findViewById<EditText>(R.id.editText_password).text.toString()
 
             if (enteredUsername == MYUSER && enteredPassword == MYPASS) {
-                val intent = Intent(this, Inicio::class.java)
+                val intent = Intent(this, Home::class.java)
                 startActivity(intent)
 
                 finish()

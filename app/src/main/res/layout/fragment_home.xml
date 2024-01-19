@@ -30,7 +30,7 @@
         android:paddingEnd="12dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
-    />
+        />
 
 
     <TextView
@@ -76,6 +76,59 @@
 
         <ImageView
             android:id="@+id/imageView26"
+            android:layout_width="105dp"
+            android:layout_height="104dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grid1" />
+
+
+    </GridLayout>
+
+    <TextView
+        android:id="@+id/tvMood2"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchField"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="227dp"
+        android:fontFamily="@font/andika"
+        android:text="Pop"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvMood"
+        android:layout_marginTop="207dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="3"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageView40"
+            android:layout_width="105dp"
+            android:layout_height="104dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grid1" />
+
+        <ImageView
+            android:id="@+id/imageView30"
+            android:layout_width="105dp"
+            android:layout_height="104dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/grid1" />
+
+        <ImageView
+            android:id="@+id/imageView29"
             android:layout_width="105dp"
             android:layout_height="104dp"
             android:layout_margin="8dp"
