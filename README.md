@@ -15,13 +15,13 @@ Proximamente tambien su reproducción.
     - Eliminar música existente
     - Editar detalles de la música
 
-## Capturas de Pantalla o video
+## Capturas de pantalla o video
 
 Junto a la entrega de esta tarea, sera adjunta el video demostrativo de está.
 
 ## Instalación
 
-1. Clona el repositorio: `git clone https://github.com/tuusuario/turepositorio.git`
+1. Clona el repositorio: `git clone https://github.com/pfervva/AplicacionFragmentos`
 2. Abre el proyecto en Android Studio.
 3. Ejecuta la aplicación en un emulador o dispositivo físico.
 
