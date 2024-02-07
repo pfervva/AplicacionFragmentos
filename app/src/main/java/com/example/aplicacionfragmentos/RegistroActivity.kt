@@ -1,5 +1,6 @@
 package com.example.aplicacionfragmentos
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -11,20 +12,28 @@ import androidx.appcompat.app.AppCompatActivity
 class RegistroActivity : AppCompatActivity() {
 
     companion object {
-        const val MYUSER = ""
-        const val MYPASS = ""
+        const val MYUSER = "" // Actualiza esto con tus credenciales
+        const val MYPASS = "" // Actualiza esto con tus credenciales
+        const val PREFS_NAME = "MyPrefsFile"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
+        // Verificar si ya ha iniciado sesión
+        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        if (sharedPreferences.getBoolean("isLoggedIn", false)) {
+            // Usuario ya ha iniciado sesión, redirigir a Home
+            startActivity(Intent(this, Home::class.java))
+            finish()
+        }
+
         val textView7: TextView = findViewById(R.id.textView7)
         val buttonLogin: Button = findViewById(R.id.buttonlogin)
 
         textView7.setOnClickListener {
-            val intent = Intent(this, InicioSesionActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, InicioSesionActivity::class.java))
         }
 
         buttonLogin.setOnClickListener {
@@ -32,9 +41,13 @@ class RegistroActivity : AppCompatActivity() {
             val enteredPassword = findViewById<EditText>(R.id.editText_password).text.toString()
 
             if (enteredUsername == MYUSER && enteredPassword == MYPASS) {
-                val intent = Intent(this, Home::class.java)
-                startActivity(intent)
+                // Guardar estado de inicio de sesión
+                sharedPreferences.edit().apply {
+                    putBoolean("isLoggedIn", true)
+                    apply()
+                }
 
+                startActivity(Intent(this, Home::class.java))
                 finish()
             } else {
                 Toast.makeText(this, "Nombre de usuario o contraseña erroneo", Toast.LENGTH_SHORT).show()
