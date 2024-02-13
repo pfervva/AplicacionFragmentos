@@ -25,13 +25,10 @@
             android:label="@string/title_activity_inicio"
             android:theme="@style/Theme.AplicacionFragmentos" />
         <activity
-            android:name=".RegistroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".InicioSesionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

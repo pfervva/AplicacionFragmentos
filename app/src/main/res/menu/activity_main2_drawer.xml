@@ -4,6 +4,7 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <!-- Otros ítems del menú -->
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
@@ -16,5 +17,16 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_ajustes" />
+    </group>
+
+    <item android:title="_______________________________________"
+        android:id="@+id/nav_separator"
+        android:enabled="false" />
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@android:drawable/ic_lock_power_off"
+            android:title="Salir" />
     </group>
 </menu>
