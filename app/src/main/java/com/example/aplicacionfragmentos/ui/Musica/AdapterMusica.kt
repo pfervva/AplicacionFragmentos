@@ -3,6 +3,7 @@ package com.example.aplicacionfragmentos.ui.Musica
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.aplicacionfragmentos.databinding.ItemMusicBinding
 import com.example.aplicacionfragmentos.ui.Musica.models.Musica
 
@@ -22,7 +23,9 @@ class AdapterMusica(
         fun bind(musica: Musica, position: Int) {
             binding.txtSongTitle.text = musica.name
             binding.txtArtists.text = musica.artita
-            // Aquí deberías configurar la imagen con Glide, si es necesario
+            Glide.with(binding.root)
+                .load(musica.image)
+                .into(binding.ivMusic)
 
             binding.btnDelete.setOnClickListener {
                 onDelete(position)
