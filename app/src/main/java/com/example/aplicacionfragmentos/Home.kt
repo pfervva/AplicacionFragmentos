@@ -2,6 +2,7 @@ package com.example.aplicacionfragmentos
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -11,6 +12,7 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.aplicacionfragmentos.databinding.ActivityHomeBinding
+import com.example.aplicacionfragmentos.ui.viewmodels.HomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 
@@ -18,6 +20,7 @@ class Home : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeBinding
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,40 +36,32 @@ class Home : AppCompatActivity() {
             setOf(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow), drawerLayout
         )
 
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.navView.setupWithNavController(navController)
+
         // Configuración del BottomNavigationView
         val bottomNavView: BottomNavigationView = binding.bottomNavigation
         bottomNavView.setupWithNavController(navController)
 
-        // Configuración automática de la navegación para el navView lateral
+        // Configuración automática de la navegación para el NavigationView lateral
         val sideNavView: NavigationView = binding.navView
-        setupActionBarWithNavController(navController, appBarConfiguration)
         sideNavView.setupWithNavController(navController)
 
-        // Configurar el listener de NavigationView para manejar el clic en "Salir" manteniendo la navegación automática
+        // Configurar el listener de NavigationView para manejar el clic en "Salir"
         sideNavView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_logout -> {
-                    logout()
-                    true // Indica que has manejado el evento
+                    homeViewModel.logout()
+                    navigateToLogin()
+                    true
                 }
-                else -> {
-                    // Permite que la navegación automática maneje otros elementos del menú
-                    menuItem.onNavDestinationSelected(navController) || super.onOptionsItemSelected(menuItem)
-                }
+                else -> menuItem.onNavDestinationSelected(navController) || super.onOptionsItemSelected(menuItem)
             }
         }
     }
 
-    private fun logout() {
-        // Limpia las preferencias compartidas para cerrar sesión
-        val preferences = getSharedPreferences(RegistroActivity.PREFS_NAME, MODE_PRIVATE)
-        preferences.edit().apply {
-            clear()
-            apply()
-        }
-        // Redirige al usuario a la pantalla de inicio de sesión
-        val intent = Intent(this, InicioSesionActivity::class.java)
-        startActivity(intent)
+    private fun navigateToLogin() {
+        startActivity(Intent(this, InicioSesionActivity::class.java))
         finish()
     }
 
