@@ -1,6 +1,6 @@
 package com.example.aplicacionfragmentos.objects_models
 
-import com.example.aplicacionfragmentos.models.Musica
+import com.example.aplicacionfragmentos.ui.Musica.models.Musica
 
 
 object Repository {

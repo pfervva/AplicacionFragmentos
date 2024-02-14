@@ -28,7 +28,7 @@
             android:name=".InicioSesionActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.viewmodels.RegistroActivity"
+            android:name=".ui.Registro.RegistroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

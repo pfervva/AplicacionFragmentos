@@ -1,5 +1,6 @@
 package com.example.aplicacionfragmentos.utils
-object Constants {
+object
+Constants {
     const val PREFS_NAME = "Preferencias"
     const val IS_LOGIN = "IsLogged"
     const val MYUSER = "usuario"

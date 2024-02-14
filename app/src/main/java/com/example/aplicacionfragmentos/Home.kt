@@ -12,7 +12,7 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.aplicacionfragmentos.databinding.ActivityHomeBinding
-import com.example.aplicacionfragmentos.ui.viewmodels.HomeViewModel
+import com.example.aplicacionfragmentos.ui.Home.HomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 

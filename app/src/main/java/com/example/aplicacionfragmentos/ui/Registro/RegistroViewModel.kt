@@ -1,4 +1,4 @@
-package com.example.aplicacionfragmentos.ui.viewmodels
+package com.example.aplicacionfragmentos.ui.Registro
 
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel

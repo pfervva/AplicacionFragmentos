@@ -1,4 +1,4 @@
-package com.example.aplicacionfragmentos.models
+package com.example.aplicacionfragmentos.ui.Musica.models
 
 class Musica (
     var name: String,

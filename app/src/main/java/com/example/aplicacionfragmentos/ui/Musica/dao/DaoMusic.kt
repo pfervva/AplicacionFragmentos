@@ -1,8 +1,8 @@
-package com.example.aplicacionfragmentos.dao
+package com.example.aplicacionfragmentos.ui.Musica.dao
 
 import com.example.aplicacionfragmentos.objects_models.Repository
-import com.example.aplicacionfragmentos.interfaces.InterfaceDao
-import com.example.aplicacionfragmentos.models.Musica
+import com.example.aplicacionfragmentos.ui.Musica.interfaces.InterfaceDao
+import com.example.aplicacionfragmentos.ui.Musica.models.Musica
 
 class DaoMusic private constructor(): InterfaceDao {
     companion object {

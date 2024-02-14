@@ -1,4 +1,4 @@
-package com.example.aplicacionfragmentos.ui.viewmodels
+package com.example.aplicacionfragmentos.ui.Home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
