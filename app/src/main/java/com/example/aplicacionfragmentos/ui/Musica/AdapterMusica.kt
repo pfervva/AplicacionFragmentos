@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.aplicacionfragmentos.databinding.ItemMusicBinding
 import com.example.aplicacionfragmentos.ui.Musica.models.Musica
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class AdapterMusica(
+@AndroidEntryPoint
+class AdapterMusica @Inject constructor(
     private var listMusica: List<Musica>,
     private val onEdit: (Musica, Int) -> Unit,
     private val onDelete: (Int) -> Unit

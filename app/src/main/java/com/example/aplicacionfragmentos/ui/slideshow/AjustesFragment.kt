@@ -26,7 +26,7 @@ class AjustesFragment : Fragment() {
         setupSpinner(binding.spinnerAudioQuality)
         setupRadioGroup(binding.radioGroupTheme)
 
-        // Más configuraciones aquí...
+
 
         return root
     }
@@ -40,7 +40,7 @@ class AjustesFragment : Fragment() {
     private fun setupSeekBar(seekBar: SeekBar) {
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                // Lógica para ajustar el volumen
+                // Lógica para ajustar el volumen, esto santi es para un futuro
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}

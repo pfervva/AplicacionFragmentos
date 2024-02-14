@@ -1,4 +1,4 @@
-package com.example.aplicacionfragmentos
+package com.example.aplicacionfragmentos.more
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.aplicacionfragmentos.R
 import com.example.aplicacionfragmentos.databinding.ActivityHomeBinding
 import com.example.aplicacionfragmentos.ui.Home.HomeViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView

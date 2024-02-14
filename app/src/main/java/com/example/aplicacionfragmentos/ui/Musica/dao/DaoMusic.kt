@@ -11,5 +11,8 @@ class DaoMusic private constructor(): InterfaceDao {
         }
     }
     //Método que accede a la BBDD y devuelve todos los datos
+
+    //Esto es para la futura base de datos que hablamos con rooms, ya he intentado pero viendo que no
+    //me salia lo deje con el comit funcional del 1.4
     override fun getDataHotels(): List<Musica> = Repository.listMusicas
 }

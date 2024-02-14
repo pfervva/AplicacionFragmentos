@@ -7,7 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.aplicacionfragmentos.Home
+import com.example.aplicacionfragmentos.more.Home
 import com.example.aplicacionfragmentos.R
 import com.example.aplicacionfragmentos.utils.Constants
 
@@ -46,4 +46,5 @@ class RegistroActivity : AppCompatActivity() {
     private fun showErrorToast() {
         Toast.makeText(this, "Nombre de usuario o contraseña erróneo", Toast.LENGTH_SHORT).show()
     }
+    //Pone registro pero es login, lo tengo intercambiados por que me equivoque desde el principio
 }

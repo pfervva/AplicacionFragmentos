@@ -5,6 +5,6 @@ Constants {
     const val IS_LOGIN = "IsLogged"
     const val MYUSER = "usuario"
     const val MYPASS = "contraseña"
-    const val USUARIO = ""
-    const val CONTRASEÑA = ""
+    const val USUARIO = "pfer"
+    const val CONTRASEÑA = "pfer"
 }
