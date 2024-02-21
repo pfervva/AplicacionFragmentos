@@ -2,16 +2,17 @@ package com.example.aplicacionfragmentos.ui.Home
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.aplicacionfragmentos.utils.Constants.PREFS_NAME
+import androidx.lifecycle.viewModelScope
+import com.example.aplicacionfragmentos.ui.data.AppDatabase
+import kotlinx.coroutines.launch
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val userDao = AppDatabase.getDatabase(application).userDao()
+
     fun logout() {
-        // Obtiene las SharedPreferences usando el contexto de la aplicación
-        val preferences = getApplication<Application>().getSharedPreferences(PREFS_NAME, Application.MODE_PRIVATE)
-        preferences.edit().apply {
-            clear()
-            apply()
+        viewModelScope.launch {
+            userDao.logoutCurrentUser()
         }
     }
 }

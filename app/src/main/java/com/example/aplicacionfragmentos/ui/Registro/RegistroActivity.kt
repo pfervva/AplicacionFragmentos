@@ -14,19 +14,21 @@ import com.example.aplicacionfragmentos.utils.Constants
 class RegistroActivity : AppCompatActivity() {
 
     private val viewModel: RegistroViewModel by viewModels {
-        RegistroViewModelFactory(getSharedPreferences(Constants.PREFS_NAME, MODE_PRIVATE))
+        RegistroViewModelFactory(application)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
+        //Aqui verifico si esta logueado o no
+        viewModel.checkLoggedInUser()
 
         viewModel.registroState.observe(this) { state ->
             when (state) {
                 RegistroViewModel.RegistroState.SUCCESS -> goToHome()
                 RegistroViewModel.RegistroState.ALREADY_LOGGED_IN -> goToHome()
                 RegistroViewModel.RegistroState.ERROR -> showErrorToast()
-                RegistroViewModel.RegistroState.NOT_LOGGED_IN -> { /* No action needed */ }
+                RegistroViewModel.RegistroState.NOT_LOGGED_IN -> { }
             }
         }
 
@@ -46,5 +48,6 @@ class RegistroActivity : AppCompatActivity() {
     private fun showErrorToast() {
         Toast.makeText(this, "Nombre de usuario o contraseña erróneo", Toast.LENGTH_SHORT).show()
     }
-    //Pone registro pero es login, lo tengo intercambiados por que me equivoque desde el principio
+
+//Pone registro pero es login, lo tengo intercambiados por que me equivoque desde el principio
 }
