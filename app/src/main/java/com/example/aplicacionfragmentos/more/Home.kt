@@ -2,7 +2,6 @@ package com.example.aplicacionfragmentos.more
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -12,16 +11,15 @@ import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.aplicacionfragmentos.R
+import com.example.aplicacionfragmentos.RetroFit.PreferenceHelper
 import com.example.aplicacionfragmentos.databinding.ActivityHomeBinding
-import com.example.aplicacionfragmentos.ui.Home.HomeViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.aplicacionfragmentos.ui.Registro.InicioSesionActivity
 import com.google.android.material.navigation.NavigationView
 
 class Home : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeBinding
-    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,19 +39,18 @@ class Home : AppCompatActivity() {
         binding.navView.setupWithNavController(navController)
 
         // Configuración del BottomNavigationView
-        val bottomNavView: BottomNavigationView = binding.bottomNavigation
+        val bottomNavView = binding.bottomNavigation
         bottomNavView.setupWithNavController(navController)
 
         // Configuración automática de la navegación para el NavigationView lateral
         val sideNavView: NavigationView = binding.navView
         sideNavView.setupWithNavController(navController)
 
-        // Configurar el listener de NavigationView para manejar el clic en "Salir"
+        // Listener para el ítem de logout en el NavigationView
         sideNavView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_logout -> {
-                    homeViewModel.logout()
-                    navigateToLogin()
+                    logout()
                     true
                 }
                 else -> menuItem.onNavDestinationSelected(navController) || super.onOptionsItemSelected(menuItem)
@@ -61,8 +58,15 @@ class Home : AppCompatActivity() {
         }
     }
 
-    private fun navigateToLogin() {
-        startActivity(Intent(this, InicioSesionActivity::class.java))
+    private fun logout() {
+        // Borrar el token de SharedPreferences
+        PreferenceHelper.clearAuthToken(this)
+
+        // Redirigir al usuario a la pantalla de inicio de sesión
+        val intent = Intent(this, InicioSesionActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(intent)
         finish()
     }
 

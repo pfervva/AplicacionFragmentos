@@ -1,11 +1,10 @@
-package com.example.aplicacionfragmentos.more
+package com.example.aplicacionfragmentos.ui.Registro
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.example.aplicacionfragmentos.R
-import com.example.aplicacionfragmentos.ui.Registro.RegistroActivity
 
 class InicioSesionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
