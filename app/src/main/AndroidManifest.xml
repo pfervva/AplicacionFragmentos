@@ -26,10 +26,10 @@
             android:label="@string/title_activity_inicio"
             android:theme="@style/Theme.AplicacionFragmentos" />
         <activity
-            android:name=".ui.Registro.InicioSesionActivity"
+            android:name=".ui.Registro.inicio.InicioSesionActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Registro.RegistroActivity"
+            android:name=".ui.Registro.Registro.RegistroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

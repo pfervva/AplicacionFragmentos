@@ -1,9 +1,10 @@
-package com.example.aplicacionfragmentos.ui.Registro
+package com.example.aplicacionfragmentos.ui.Registro.Registro
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aplicacionfragmentos.R
@@ -11,6 +12,7 @@ import com.example.aplicacionfragmentos.RetroFit.ApiClient
 import com.example.aplicacionfragmentos.RetroFit.LoginRequest
 import com.example.aplicacionfragmentos.RetroFit.PreferenceHelper
 import com.example.aplicacionfragmentos.more.Home
+import com.example.aplicacionfragmentos.ui.Registro.inicio.InicioSesionActivity
 import kotlinx.coroutines.*
 
 class RegistroActivity : AppCompatActivity() {
@@ -27,6 +29,14 @@ class RegistroActivity : AppCompatActivity() {
             val enteredEmail = findViewById<EditText>(R.id.editText_login).text.toString()
             val enteredPassword = findViewById<EditText>(R.id.editText_password).text.toString()
             loginUser(enteredEmail, enteredPassword)
+        }
+
+        // Configura el TextView para que actúe como botón de redirección al registro (LoginActivity)
+        val textViewRegister: TextView = findViewById(R.id.textView7)
+        textViewRegister.setOnClickListener {
+            // Inicia LoginActivity, que es tu pantalla de registro
+            val loginIntent = Intent(this, InicioSesionActivity::class.java)
+            startActivity(loginIntent)
         }
     }
 

@@ -13,7 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.aplicacionfragmentos.R
 import com.example.aplicacionfragmentos.RetroFit.PreferenceHelper
 import com.example.aplicacionfragmentos.databinding.ActivityHomeBinding
-import com.example.aplicacionfragmentos.ui.Registro.InicioSesionActivity
+import com.example.aplicacionfragmentos.ui.Registro.inicio.InicioSesionActivity
 import com.google.android.material.navigation.NavigationView
 
 class Home : AppCompatActivity() {

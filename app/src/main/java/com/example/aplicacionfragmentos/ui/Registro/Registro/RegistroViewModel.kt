@@ -1,4 +1,4 @@
-package com.example.aplicacionfragmentos.ui.Registro
+package com.example.aplicacionfragmentos.ui.Registro.Registro
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
