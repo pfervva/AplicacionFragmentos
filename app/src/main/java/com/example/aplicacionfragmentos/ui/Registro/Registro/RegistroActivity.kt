@@ -31,10 +31,8 @@ class RegistroActivity : AppCompatActivity() {
             loginUser(enteredEmail, enteredPassword)
         }
 
-        // Configura el TextView para que actúe como botón de redirección al registro (LoginActivity)
         val textViewRegister: TextView = findViewById(R.id.textView7)
         textViewRegister.setOnClickListener {
-            // Inicia LoginActivity, que es tu pantalla de registro
             val loginIntent = Intent(this, InicioSesionActivity::class.java)
             startActivity(loginIntent)
         }
@@ -45,7 +43,7 @@ class RegistroActivity : AppCompatActivity() {
         if (token != null && token.isNotEmpty()) {
             goToHome()
         }
-        // Si no hay token, el usuario debe iniciar sesión, por lo que permanece en esta actividad
+        // Si no hay token, el usuario debe iniciar sesion, por lo que permanece en esta actividad
     }
 
     private fun loginUser(email: String, password: String) {
