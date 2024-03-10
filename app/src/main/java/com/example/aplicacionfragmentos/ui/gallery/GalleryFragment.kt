@@ -69,7 +69,7 @@ class GalleryFragment : Fragment() {
 
         musica?.let {
             editTextName.setText(it.name)
-            editTextArtist.setText(it.artita)
+            editTextArtist.setText(it.artista)
             editTextImage.setText(it.image)
         }
 
@@ -79,9 +79,10 @@ class GalleryFragment : Fragment() {
                 val name = editTextName.text.toString()
                 val artist = editTextArtist.text.toString()
                 val image = editTextImage.text.toString()
-                val newMusica = if (musica == null) Musica(name, artist, image) else musica.apply {
+                val newMusica = if (musica == null) Musica(id,name, artist, image) else musica.apply {
+                    this.id = id
                     this.name = name
-                    this.artita = artist
+                    this.artista = artist
                     this.image = image
                 }
 

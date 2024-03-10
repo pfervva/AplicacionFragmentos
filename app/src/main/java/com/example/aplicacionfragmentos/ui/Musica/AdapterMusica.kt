@@ -25,7 +25,7 @@ class AdapterMusica @Inject constructor(
 
         fun bind(musica: Musica, position: Int) {
             binding.txtSongTitle.text = musica.name
-            binding.txtArtists.text = musica.artita
+            binding.txtArtists.text = musica.artista
             Glide.with(binding.root)
                 .load(musica.image)
                 .into(binding.ivMusic)
