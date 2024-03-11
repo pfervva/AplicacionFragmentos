@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.aplicacionfragmentos.RetroFit.ApiClient
 import com.example.aplicacionfragmentos.RetroFit.ApiService
 import com.example.aplicacionfragmentos.objects_models.Repository
 import com.example.aplicacionfragmentos.ui.Musica.models.Musica
@@ -28,11 +29,26 @@ class MusicaViewModel(application: Application) : AndroidViewModel(application) 
     fun deleteMusica(position: Int) {
         viewModelScope.launch {
             if (position >= 0 && position < _listMusicas.value!!.size) {
-                val updatedList = _listMusicas.value!!.toMutableList().apply {
-                    removeAt(position)
+                val musicaToDelete = _listMusicas.value!![position]
+                token?.let { tkn ->
+                    try {
+                        val response = ApiClient.instance.deleteCancion(apiKey = tkn, id = musicaToDelete.id.toString())
+                        if (response.isSuccessful) {
+                            // La canción se ha borrado exitosamente de la API, ahora actualizamos la lista localmente
+                            fetchMusicasFromAPI() // Llamada para actualizar la lista de canciones desde la API
+                        } else {
+                            // Manejar errores o respuesta no exitosa
+                            withContext(Dispatchers.Main) {
+                                // Actualiza la UI si es necesario, por ejemplo, mostrando un mensaje de error
+                            }
+                        }
+                    } catch (e: Exception) {
+                        // Manejar excepción, por ejemplo, problemas de red
+                        withContext(Dispatchers.Main) {
+                            // Actualiza la UI si es necesario
+                        }
+                    }
                 }
-                _listMusicas.value = updatedList
-                Repository.listMusicas = updatedList // Actualiza el repositorio si es necesario
             }
         }
     }

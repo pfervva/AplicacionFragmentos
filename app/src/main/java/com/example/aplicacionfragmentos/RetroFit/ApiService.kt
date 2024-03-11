@@ -4,9 +4,11 @@ import com.example.aplicacionfragmentos.ui.Registro.inicio.InicioSesionRequest
 import com.example.aplicacionfragmentos.ui.Registro.inicio.InicioSesionResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiService {
     @POST("endp/auth")
@@ -15,4 +17,6 @@ interface ApiService {
     suspend fun registrarUsuario(@Body registroRequest: InicioSesionRequest): Response<InicioSesionResponse>
     @GET("endp/cancion")
     suspend fun getCanciones(@Header("api-key") apiKey: String): Response<CancionesResponse>
+    @DELETE("endp/cancion")
+    suspend fun deleteCancion(@Header("api-key") apiKey: String, @Query("id") id: String): Response<Any>
 }
