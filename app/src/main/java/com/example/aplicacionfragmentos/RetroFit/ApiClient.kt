@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
     //Ya que lo estoy ejecutando en un movil, necesito poner la ipv4 de mi host
-    private const val BASE_URL = "http://34.175.246.97/api-musica/"
+    private const val BASE_URL = "http://192.168.1.24/api-musica/"
 
     val instance: ApiService by lazy {
         Retrofit.Builder()

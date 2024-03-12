@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.aplicacionfragmentos.RetroFit.ApiClient
 import com.example.aplicacionfragmentos.RetroFit.ApiService
 import com.example.aplicacionfragmentos.objects_models.Repository
 import com.example.aplicacionfragmentos.ui.Musica.models.Musica
@@ -27,15 +28,32 @@ class MusicaViewModel(application: Application) : AndroidViewModel(application) 
 
     fun deleteMusica(position: Int) {
         viewModelScope.launch {
-            if (position >= 0 && position < _listMusicas.value!!.size) {
-                val updatedList = _listMusicas.value!!.toMutableList().apply {
-                    removeAt(position)
+            _listMusicas.value?.let { listMusicas ->
+                if (position >= 0 && position < listMusicas.size) {
+                    val musicaId = listMusicas[position].id
+                    val token = PreferenceHelper.getAuthToken(getApplication<Application>().applicationContext)
+
+                    token?.let { tkn ->
+                        val response = ApiClient.instance.deleteCancion(musicaId, tkn)
+                        if (response.isSuccessful && response.body()?.result == "ok") {
+                            // La canción se eliminó exitosamente de la API, ahora actualiza tu lista local
+                            val updatedList = listMusicas.toMutableList().apply {
+                                removeAt(position)
+                            }
+                            _listMusicas.value = updatedList
+                            Repository.listMusicas = updatedList // Actualiza el repositorio si es necesario
+                            // Opcional: Recargar la lista desde la API para asegurarse de que los datos están sincronizados
+                            fetchMusicasFromAPI()
+                        } else {
+                            // Manejar error si la petición no fue exitosa
+                        }
+                    }
                 }
-                _listMusicas.value = updatedList
-                Repository.listMusicas = updatedList // Actualiza el repositorio si es necesario
             }
         }
     }
+
+
 
     fun addOrUpdateMusica(musica: Musica?, position: Int?) {
         viewModelScope.launch {
@@ -57,7 +75,7 @@ class MusicaViewModel(application: Application) : AndroidViewModel(application) 
             // ahora usamos el token obtenido desde las preferencias compartidas
             if (token != null) {
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://34.175.246.97/api-musica/")
+                    .baseUrl("http://192.168.1.24/api-musica/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
 
