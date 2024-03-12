@@ -1,12 +1,17 @@
 package com.example.aplicacionfragmentos.ui.Musica
 
 import android.app.Application
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.aplicacionfragmentos.RetroFit.ApiClient
 import com.example.aplicacionfragmentos.RetroFit.ApiService
+import com.example.aplicacionfragmentos.RetroFit.NuevaCancionRequest
 import com.example.aplicacionfragmentos.objects_models.Repository
 import com.example.aplicacionfragmentos.ui.Musica.models.Musica
 import kotlinx.coroutines.Dispatchers
@@ -15,6 +20,9 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.aplicacionfragmentos.RetroFit.PreferenceHelper
+import java.io.ByteArrayOutputStream
+import java.net.HttpURLConnection
+import java.net.URL
 
 
 class MusicaViewModel(application: Application) : AndroidViewModel(application) {
@@ -53,22 +61,45 @@ class MusicaViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    private fun convertImageToBase64(imageUrl: String): String {
+        val url = URL(imageUrl)
+        val connection = url.openConnection() as HttpURLConnection
+        connection.doInput = true
+        connection.connect()
+        val inputStream = connection.inputStream
+        val bitmap = BitmapFactory.decodeStream(inputStream)
+
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        val byteArray = outputStream.toByteArray()
+        val base64String = Base64.encodeToString(byteArray, Base64.DEFAULT)
+
+        // Asegúrate de usar el prefijo correcto según el formato de tu imagen.
+        return "data:image/jpg;base64,$base64String"
+    }
 
 
-    fun addOrUpdateMusica(musica: Musica?, position: Int?) {
-        viewModelScope.launch {
-            val updatedList = _listMusicas.value!!.toMutableList()
-            if (musica != null && position != null && position >= 0 && position < updatedList.size) {
-                // Actualizar música existente
-                updatedList[position] = musica
-            } else if (musica != null) {
-                // Agregar nueva música
-                updatedList.add(musica)
+    fun addMusica(nombre: String, artista: String, imageUrl: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val imageBase64 = withContext(Dispatchers.IO) { convertImageToBase64(imageUrl) }
+                val nuevaCancionRequest = NuevaCancionRequest(nombre, artista, imageBase64)
+
+                token?.let { tkn ->
+                    val response = ApiClient.instance.addCancion(tkn, nuevaCancionRequest)
+                    if (response.isSuccessful && response.body()?.result == "ok insercion") {
+                        fetchMusicasFromAPI()
+                    } else {
+                        Log.e("AddSong", "Failed to add song: ${response.errorBody()?.string()}")
+                    }
+                } ?: Log.e("AddSong", "API key (token) is null")
+            } catch (e: Exception) {
+                Log.e("AddSong", "Exception in addMusica: ${e.message}", e)
             }
-            _listMusicas.value = updatedList
-            Repository.listMusicas = updatedList // actualiza el repositorio si es necesario
         }
     }
+
+
 
     private fun fetchMusicasFromAPI() {
         viewModelScope.launch(Dispatchers.IO) {

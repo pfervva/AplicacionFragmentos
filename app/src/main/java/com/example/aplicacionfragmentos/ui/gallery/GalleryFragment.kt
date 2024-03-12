@@ -78,18 +78,18 @@ class GalleryFragment : Fragment() {
             .setPositiveButton("Aceptar") { dialog, which ->
                 val name = editTextName.text.toString()
                 val artist = editTextArtist.text.toString()
-                val image = editTextImage.text.toString()
-                val newMusica = if (musica == null) Musica(id,name, artist, image) else musica.apply {
-                    this.id = id
-                    this.name = name
-                    this.artista = artist
-                    this.image = image
-                }
+                val imageUrl = editTextImage.text.toString() // Asegúrate de tener una URL aquí
 
-                viewModel.addOrUpdateMusica(newMusica, musica?.let { viewModel.listMusicas.value?.indexOf(it) })
+                if (musica == null) {
+                    // Estamos añadiendo una nueva canción
+                    viewModel.addMusica( name, artist, imageUrl)
+                } else {
+                    // Aquí manejarías la actualización de una canción existente si es necesario
+                }
             }
             .setNegativeButton("Cancelar", null)
             .show()
+
     }
 
     override fun onDestroyView() {

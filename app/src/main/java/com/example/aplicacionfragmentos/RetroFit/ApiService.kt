@@ -18,8 +18,9 @@ interface ApiService {
     @GET("endp/cancion")
     suspend fun getCanciones(@Header("api-key") apiKey: String): Response<CancionesResponse>
     @DELETE("endp/cancion")
-    suspend fun deleteCancion(
-        @Query("id") idCancion: Int,
-        @Header("api-key") apiKey: String
-    ): Response<GenericResponse>
-}
+    suspend fun deleteCancion(@Query("id") idCancion: Int, @Header("api-key") apiKey: String): Response<GenericResponse>
+    @POST("endp/cancion")
+    suspend fun addCancion(
+        @Header("api-key") apiKey: String,
+        @Body nuevaCancion: NuevaCancionRequest
+    ): Response<NuevaCancionResponse>}
