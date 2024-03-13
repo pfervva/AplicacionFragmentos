@@ -99,6 +99,33 @@ class MusicaViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    fun updateMusica(id: Int, nombre: String, artista: String, imageUrl: String) {
+        viewModelScope.launch {
+            try {
+                // Convertir imagen a Base64 en el hilo de IO
+                val imageBase64 = withContext(Dispatchers.IO) { convertImageToBase64(imageUrl) }
+                val cancionRequest = NuevaCancionRequest(nombre, artista, imageBase64)
+
+                token?.let { tkn ->
+                    val response = withContext(Dispatchers.IO) {
+                        ApiClient.instance.updateCancion(id, tkn, cancionRequest)
+                    }
+
+                    if (response.isSuccessful && response.body()?.result == "ok actualizacion") {
+                        // La actualización fue exitosa
+                        Log.d("UpdateSong", "Song updated successfully.")
+
+                        fetchMusicasFromAPI()
+                    } else {
+                        val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                        Log.e("UpdateSong", "Failed to update song: $errorMessage")
+                    }
+                } ?: Log.e("UpdateSong", "API key (token) is null")
+            } catch (e: Exception) {
+                Log.e("UpdateSong", "Exception in updateMusica: ${e.message}", e)
+            }
+        }
+    }
 
 
     private fun fetchMusicasFromAPI() {
