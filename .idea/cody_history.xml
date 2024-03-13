@@ -80,6 +80,10 @@
           <accountId value="VXNlcjozMDUwMjI=" />
           <internalId value="dc9f9ba2-fc77-4cab-b027-1346f8b6d416" />
         </chat>
+        <chat>
+          <accountId value="VXNlcjozMDUwMjI=" />
+          <internalId value="e7b0febc-371c-4fd0-b075-98ca62893edd" />
+        </chat>
       </list>
     </chats>
   </component>
